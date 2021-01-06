@@ -1,0 +1,25 @@
+body {
+    font-family: "Futura Std", "Open Sans", sans-serif;
+    color: #323846;
+}
+
+.content {
+    margin: auto;
+    text-align: center;
+    position: relative;
+    top: 30vh;
+}
+.logo img {
+    width: 100px;
+}
+.mail {
+    margin-top: 20px;
+}
+.mail a {
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+}
+.mail a:hover {
+    color: #BEA7E5;
+}
