@@ -13,8 +13,8 @@
 
     <body>
         <div class="container">
-            <div>
-              <video id ="main-video" width="460" height="460" autoplay loop controls preload="auto">
+            <div id="video-container">
+              <video id ="main-video" width="460" height="460" autoplay loop controls muted preload="auto">
                 <source src="videos/05-Happiest.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -23,13 +23,22 @@
               <span id="visitor-count">59</span> visitors of this exhibition <span id="mood-label">hated</span> working during their vacations.
             </p>
            
-            <div>
-              <img id ="mood-01" src="img/moods/01-Saddest.png">
-              <img id ="mood-02" src="img/moods/02-Sad.png">
-              <img id ="mood-03" src="img/moods/03-Meh.png">
-              <img id ="mood-04" src="img/moods/04-Happy.png">
-              <img id ="mood-05" src="img/moods/05-Happiest.png">
-              <button onclick="moodBtn()">test</button>
+            <div id="face-row">
+              <div class="mood-face">
+                <img id ="mood-01" src="img/moods/01-Saddest.png">
+              </div>
+              <div class="mood-face">
+                <img id ="mood-02" src="img/moods/02-Sad.png">
+              </div>
+              <div class="mood-face">
+                <img id ="mood-03" src="img/moods/03-Meh.png">
+              </div>
+              <div class="mood-face">
+                <img id ="mood-04" src="img/moods/04-Happy.png">
+              </div>
+              <div class="mood-face">
+                <img id ="mood-05" src="img/moods/05-Happiest.png">
+              </div>
             </div>
 
             <div id="mood-gradient">
