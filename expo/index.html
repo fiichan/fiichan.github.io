@@ -4,6 +4,7 @@
       <!--Fonts-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link href="font/radial/Radial Bold.otf">
+      <link href="font/proximanova/proxima_nova_regular.woff">
       <link type="text/css" rel="stylesheet" href="css/grid/simple-grid.css"  media="screen,projection"/>
       <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
 
@@ -14,37 +15,60 @@
     <body>
         <div class="container">
             <div id="video-container">
-              <video id ="main-video" width="460" height="460" autoplay loop controls muted preload="auto">
+              <video id ="main-video" width="650" height="650" autoplay loop controls muted preload="auto">
                 <source src="videos/05-Happiest.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             </div>
-            <p id="text">
-              <span id="visitor-count">59</span> visitors of this exhibition <span id="mood-label">hated</span> working during their vacations.
-            </p>
+            
+            <div id="text-container">
+              <p id="text">
+                Most of the <span id="visitor-count">59</span> visitors of this exhibition <span id="mood-label">hated</span> working during their vacations.
+              </p>
+            </div>
            
             <div id="face-row">
               <div class="mood-face">
-                <img id ="mood-01" src="img/moods/01-Saddest.png">
+                  <a class="mood-btn">
+                      <img id="mood-01" src="img/moods/01-Saddest.png">
+                  </a>
               </div>
               <div class="mood-face">
-                <img id ="mood-02" src="img/moods/02-Sad.png">
+                <img id="mood-02" src="img/moods/02-Sad.png">
               </div>
               <div class="mood-face">
-                <img id ="mood-03" src="img/moods/03-Meh.png">
+                <img id="mood-03" src="img/moods/03-Meh.png">
               </div>
               <div class="mood-face">
-                <img id ="mood-04" src="img/moods/04-Happy.png">
+                <img id="mood-04" src="img/moods/04-Happy.png">
               </div>
               <div class="mood-face">
-                <img id ="mood-05" src="img/moods/05-Happiest.png">
+                <img id="mood-05" src="img/moods/05-Happiest.png">
               </div>
             </div>
 
-            <div id="mood-gradient">
+            <div id="percent-row">
+              <div class="mood-face">
+                <p id="percent-01">50%</p>
+              </div>
+              <div class="mood-face">
+                <p id="percent-02">50%</p>
+              </div>
+              <div class="mood-face">
+                <p id="percent-03">50%</p>
+              </div>
+              <div class="mood-face">
+                <p id="percent-04">50%</p>
+              </div>
+              <div class="mood-face">
+                <p id="percent-05">50%</p>
+              </div>
+            </div>
+
+            <!--<div id="mood-gradient">
             </div>
             <div id="mood-cover">
-            </div>
+            </div>-->
         </div>
         <!--JavaScript at end of body for optimized loading-->
         <script
