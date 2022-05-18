@@ -1,5 +1,6 @@
-const moodColors = ["#F45453", "#FC9B21", "#FDCF3D", "#91E777", "#00C96C"];
+const moodColors = ["#F40504", "#FF9C03", "#FBFB0D", "#72ED4C", "#00A358"];
 const moodLabels = ["hated", "disliked", "didn't mind", "liked", "loved"];
+const moodNumber = ["1", "2", "3", "4", "5"];
 
 const moodId = "mood-0";
 const percentId = "percent-0";
@@ -66,7 +67,7 @@ document.body.addEventListener("click", () => {
 function vote() {
     console.log("ActiveBtn " + selectedVote);
     myIncrement("visitors");
-    myIncrement("vote0" + (selectedVote + 1));
+    myIncrement("vote0" + moodNumber[selectedVote]);
     getVote(selectedVote);
 }
 
@@ -101,7 +102,7 @@ function moodBtn(clickedId, index) {
 /* Define % and mood */
 function win() {
     var max = Math.max(...votes);
-    mood = votes.indexOf(max) + 1;
+    mood = moodNumber[votes.indexOf(max)];
     console.log({
         votes,
         mood
@@ -131,19 +132,35 @@ function moodSwitch() {
 function moodChange(index) {
     moodReset();
 
-    document.getElementById("mood-label").style.color = moodColors[index];
+    document.getElementById("mood-label").style.background = moodColors[index];
+
+    if (index == 0 || index == 4) {
+        document.getElementById("mood-label").style.color = "#FFFFFF";
+    }
+    if (index == 1 || index == 2 || index == 3) {
+        document.getElementById("mood-label").style.color = "#000000";
+    }
+
     document.getElementById('mood-label').innerHTML = moodLabels[index];
 
-    document.getElementById(percentId + (index+1)).style.color = moodColors[index];
-    document.getElementById(moodId + (index+1)).src= filePath + fileNames[index] + fileActive;
-    /*document.getElementById("mood-cover").style.width = 100-mood + '%';*/
+    document.getElementById(moodId + moodNumber[index]).src= filePath + fileNames[index] + fileActive;
+    //document.getElementById(percentId + moodNumber[index]).style.background = moodColors[index];
+    document.getElementById(percentId + moodNumber[index]).style.fontWeight = "bold";
+
+    if (index == 0 || index == 4) {
+        document.getElementById(percentId + moodNumber[index]).style.color = "#FFFFFF";
+    }
+    if (index == 1 || index == 2 || index == 3) {
+        document.getElementById(percentId + moodNumber[index]).style.color = "#000000";
+    }
     
     vid.src = videoPath + fileNames[index] + ".mp4";
 }
 function moodReset() {
     for(i=0;i<5;++i) {
-        document.getElementById(moodId + (i+1)).src= filePath + fileNames[i] + ".png";
-        document.getElementById(percentId + (i+1)).style.color = "#E3E3E3";
+        document.getElementById(moodId + moodNumber[i]).src= filePath + fileNames[i] + ".png";
+        document.getElementById(percentId + moodNumber[i]).style.color = "#E3E3E3";
+        document.getElementById(percentId + moodNumber[i]).style.fontWeight = "400";
     }
 }
 
@@ -178,7 +195,7 @@ function getMood() {
 
 
 function getVote(index) {
-    return myGet("vote0" + (index + 1)).then(function (result) {
+    return myGet("vote0" + moodNumber[index]).then(function (result) {
         votes[index] = parseInt(result);
     });
 }

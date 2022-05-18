@@ -1,14 +1,14 @@
 /* Colors 
-Blue: #143F6B
-Red: #F45453
-Orange: #FC9B21
-Yellow: #FDCF3D
-Light Green: #91E777
-Green: #00C96C
+Blue: #00356B
+Red: #F40504
+Orange: #FF9C03
+Yellow: #FBFB0D
+Light Green: #72ED4C
+Green: #00A358
 */
 
 .container {
-    padding: 20px 0 20px 0;
+    padding: 100px 0 20px 0;
 }
 .container div {
     margin: auto;
@@ -18,22 +18,23 @@ Green: #00C96C
 /*Text*/
 #text-container {
     text-align: center;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 200px;
+    padding-bottom: 100px;
 }
 #text {
     width: 70%;
     margin: auto;
 }
 #text, #text span {
-    font-family: 'Radial', sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 20pt;
-    font-weight: bold;
+    font-weight: 400;
     line-height: 1;
     text-align: center;
 }
 #mood-label {
-    color: #F45453;
+    /*Init State*/
+    color: #F40504;
 }
 
 /*Faces*/
@@ -55,29 +56,12 @@ Green: #00C96C
     padding-bottom: 10px;
 }
 .mood-face p {
-    font-family: 'Proxima Nova Regular', sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 20pt;
-    font-weight: bold;
+    font-weight: 400;
     line-height: 1;
     text-align: center;
     color: #E3E3E3;
-}
-
-/*Gradient*/
-#mood-gradient {
-    width: 100%;
-    height: 50px;
-    background: #F45453;
-    background: linear-gradient(90deg, #F45453 20%, #FC9B21 40%, #FDCF3D 60%, #91E777 80%, #00C96C 100%);
-}
-#mood-cover {
-    width: 40%;
-    height: 50px;    
-    background: #E3E3E3;
-    float: right;
-
-    position: relative;
-    bottom: 50px;
 }
 
 /*Vote*/
@@ -117,7 +101,7 @@ Green: #00C96C
     align-items: center;*/
 }
 .mood-btn div {
-    font-family: 'Radial', sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
     font-weight: bold;
     font-size: 40pt;
     display: inline-block;
@@ -157,17 +141,17 @@ Green: #00C96C
     color: white !important;
 }
 #mood-btn-01.active {
-    background-color: #F45453;    
+    background-color: #F40504;    
 }
 #mood-btn-02.active {
-    background-color: #FC9B21;    
+    background-color: #FF9C03;    
 }
 #mood-btn-03.active {
-    background-color: #FDCF3D;    
+    background-color: #FBFB0D;    
 }
 #mood-btn-04.active {
-    background-color: #91E777;    
+    background-color: #72ED4C;    
 }
 #mood-btn-05.active {
-    background-color: #00C96C;    
+    background-color: #00A358;    
 }
