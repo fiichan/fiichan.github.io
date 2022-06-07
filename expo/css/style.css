@@ -65,23 +65,27 @@ Green: #00A358
 }
 
 /*Vote*/
+#vote-container {
+    padding-top: 0;
+}
+#vote-container div {
+    text-align: left;
+}
 #vote-label {
-    font-family: 'Proxima Nova Regular', sans-serif;
-    font-size: 20pt;
+    font-family: 'Helvetica Neue Regular', Helvetica, Arial, sans-serif;
+    font-size: 18pt;
     line-height: 1;
 
     margin-bottom: 0;
 }
 #vote-question, #vote-question span {
-    font-family: 'Radial', sans-serif;
-    font-size: 42pt;
-    font-weight: bold;
+    font-family: 'Helvetica Neue Light', Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: 30pt;
     line-height: 1;
 
     margin-top: 20px;
-}
-#vote-question span {
-    color: #143F6B;
 }
 
 /*.mood-btn {
@@ -97,19 +101,24 @@ Green: #00A358
     width: 100%;
     border: none;
     background-color: white;
+    text-align: left;
+    margin-bottom: 20px;
     /*display: flex;
     align-items: center;*/
 }
 .mood-btn div {
-    font-family: 'Helvetica Neue', Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 40pt;
+    font-family: 'Helvetica Neue Light', Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 30pt;
     display: inline-block;
-    height: 92px;
+    height: 62px;
     padding: 10px;
 }
+.mood-btn img {
+    height: 62px;
+}
 /*Regular Btns*/
-#mood-btn-01 div {
+/*#mood-btn-01 div {
     color: #F45453;    
 }
 #mood-btn-02 div {
@@ -123,13 +132,17 @@ Green: #00A358
 }
 #mood-btn-05 div {
     color: #00C96C;    
-}
+}*/
 
 /*Submit*/
 #submit {
     background-color: #143F6B;
+    text-align: center;
 }
 #submit div {
+    font-family: 'Helvetica Neue Light', Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    text-transform: uppercase;
     color: white;
 }
 #submit.hidden{
@@ -137,11 +150,11 @@ Green: #00A358
 }
 
 /*Active Btns*/
-.mood-btn.active div{
+#mood-btn-01.active div, #mood-btn-05.active div{
     color: white !important;
 }
 #mood-btn-01.active {
-    background-color: #F40504;    
+    background-color: #F40504;
 }
 #mood-btn-02.active {
     background-color: #FF9C03;    
@@ -153,5 +166,22 @@ Green: #00A358
     background-color: #72ED4C;    
 }
 #mood-btn-05.active {
-    background-color: #00A358;    
+    background-color: #00A358;
+}
+
+/*Thanks*/
+#thanks-heart {
+    height: 145px;
+}
+#thanks-head {
+    font-family: 'Helvetica Neue Light', Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 60pt;
+    line-height: 1.2;
+    display: inline-block;
+}
+#thanks-text {
+    font-family: 'Helvetica Neue Regular', Helvetica, sans-serif;
+    font-size: 20pt;
+    display: inline-block;
 }

@@ -89,7 +89,10 @@ function moodBtn(clickedId, index) {
             document.getElementById(activeBtn).classList.remove("active");
         }
         btn.classList.add("active");
-        $( "#" + clickedId + " div img").attr("src", filePath + fileNames[index] + fileWhite);
+        $( "#" + clickedId + " div img").attr("src", filePath + fileNames[index] + fileActive);
+        if(index == 0 || index == 4) {
+            $( "#" + clickedId + " div img").attr("src", filePath + fileNames[index] + fileWhite);
+        }
         activeBtn = clickedId;
     }
 
