@@ -2,8 +2,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+        function goToExpo() {
+            window.location.pathname = window.location.pathname.replace('index.html', '') + 'expo/index.html'
+        }
+    </script>
 </head>
-<body>
+<body onload="goToExpo()">
     <div class="content">
         <h1>Coming soon &#128155;</h1>
         <div class="logo">
