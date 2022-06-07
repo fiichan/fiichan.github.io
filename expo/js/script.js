@@ -14,6 +14,7 @@ const videoPath = "videos/";
 
 /* App Key https://keyvalue.immanuel.co/ */
 const appkey = "4arncai3";
+/* Vote variables = vote01, vote02, vote03, vote04, vote05 */
 var mood = 3;
 var visitors = 2;
 
@@ -28,6 +29,7 @@ var vote03 = 2;
 var vote04 = 3;
 var vote05 = 4;
 var votes = [0,0,0,0,0];
+var percentages = [0,0,0,0,0];
 
 /*MAIN*/
 document.addEventListener("DOMContentLoaded", function(event) { 
@@ -35,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById('visitor-count').innerHTML = visitors;
     /*visitors = await myGet("visitors");
     alert(visitors);*/
-    setInterval(refreshAll, 5000);
+    setInterval(refreshAll, 1000);
 });
 
 function refreshAll() {
@@ -43,11 +45,12 @@ function refreshAll() {
     for(var i=0; i<5; ++i) {
         getVote(i);
     }
-    console.log(votes);
+    //console.log(votes);
     document.getElementById('visitor-count').innerHTML = visitors;
 
     getMood();
     moodSwitch();
+    moodPercentages();
     win();
 }
 /*function refreshAll() {
@@ -69,6 +72,7 @@ function vote() {
     myIncrement("visitors");
     myIncrement("vote0" + moodNumber[selectedVote]);
     getVote(selectedVote);
+    //window.location.href = "thanks.html";
 }
 
 /*Voting - Mood Buttons*/
@@ -106,30 +110,49 @@ function moodBtn(clickedId, index) {
 function win() {
     var max = Math.max(...votes);
     mood = moodNumber[votes.indexOf(max)];
-    console.log({
+    /*console.log({
         votes,
         mood
-    });
+    });*/
 }
 
 /* Main Screen - Mood Functions*/
 function moodSwitch() {
-    if (mood == 1) {
+    if (mood == '1') {
         moodChange(0);
+        //alert(1);
     }
-    if (mood == 2) {
+    if (mood == '2') {
         moodChange(1);
+        //alert(2);
     }
-    if(mood == 3) {
+    if(mood == '3') {
         moodChange(2);
+        //alert(3);
     }
-    if (mood == 4) {
+    if (mood == '4') {
         moodChange(3);
+        //alert(4);
     }
-    if (mood == 5) {
+    if (mood == '5') {
         moodChange(4);
+        //alert(5);
     }
 
+}
+function moodPercentages() {
+    for(var i=0; i<5; ++i) {
+        var calc = votes[i]*100 / visitors;
+
+        if(calc%1 != 0) {
+            percentages[i] = calc.toFixed(2);
+        }
+        else {
+            percentages[i] = calc;
+        }
+
+        document.getElementById(percentId + moodNumber[i]).innerHTML = percentages[i] + "%";
+    }
 }
 
 function moodChange(index) {
@@ -147,15 +170,9 @@ function moodChange(index) {
     document.getElementById('mood-label').innerHTML = moodLabels[index];
 
     document.getElementById(moodId + moodNumber[index]).src= filePath + fileNames[index] + fileActive;
-    //document.getElementById(percentId + moodNumber[index]).style.background = moodColors[index];
-    document.getElementById(percentId + moodNumber[index]).style.fontWeight = "bold";
 
-    if (index == 0 || index == 4) {
-        document.getElementById(percentId + moodNumber[index]).style.color = "#FFFFFF";
-    }
-    if (index == 1 || index == 2 || index == 3) {
-        document.getElementById(percentId + moodNumber[index]).style.color = "#000000";
-    }
+    document.getElementById(percentId + moodNumber[index]).style.fontWeight = "bold";
+    document.getElementById(percentId + moodNumber[index]).style.color = "#000000";
     
     vid.src = videoPath + fileNames[index] + ".mp4";
 }
