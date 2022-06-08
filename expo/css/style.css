@@ -7,6 +7,10 @@ Light Green: #72ED4C
 Green: #00A358
 */
 
+body {
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+
 .container {
     padding: 100px 0 20px 0;
 }
@@ -181,10 +185,34 @@ Green: #00A358
     text-transform: uppercase;
     font-size: 60pt;
     line-height: 1.2;
-    display: inline-block;
+    display: block;
 }
 #thanks-text {
     font-family: 'Helvetica Neue Regular', Helvetica, sans-serif;
     font-size: 20pt;
-    display: inline-block;
+    display: block;
+}
+
+/*Sources*/
+#sources {
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+#sources.container div {
+    text-align: left;
+}
+
+#sources-head {
+    font-family: 'Helvetica Neue Light', Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 50pt;
+    margin-bottom: 20px;
+}
+
+.sources-subhead {
+    font-family: 'Helvetica Neue Light', Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 30pt;
+    line-height: 1.3;
+    margin-bottom: 10px;
 }
