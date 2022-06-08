@@ -11,6 +11,7 @@ const fileWhite = "-White.png";
 
 var vid = document.getElementById("main-video");
 const videoPath = "videos/";
+const songDurations = [54000, 49000, 39000, 33000, 28000];
 
 /* App Key https://keyvalue.immanuel.co/ */
 const appkey = "4arncai3";
