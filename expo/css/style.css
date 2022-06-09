@@ -106,7 +106,9 @@ body {
     border: none;
     background-color: white;
     text-align: left;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    height: 60px;
     /*display: flex;
     align-items: center;*/
 }
@@ -115,26 +117,49 @@ body {
     font-weight: 100;
     font-size: 25pt;
     display: inline-block;
-    height: 55px;
+    /*height: 55px;*/
     padding: 10px;
+
+    position: absolute;
+    margin: 0%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .mood-btn img {
     height: 55px;
+    position: relative;
+    top: 5px;
+}
+.mood-btn .btn-text {
+    left: 80px;
 }
 
 /*Submit*/
 #submit {
     background-color: #143F6B;
     text-align: center;
+    position: relative;
+    width: 100%;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    height: 60px;
 }
 #submit:hover {
     background-color: #0c2e51;
 }
 #submit div {
     font-family: 'Helvetica Neue Light', Helvetica, Arial, sans-serif;
+    font-size: 25pt;
     font-weight: 100;
     text-transform: uppercase;
     color: white;
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 #submit.hidden{
     visibility: hidden;
