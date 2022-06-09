@@ -73,7 +73,7 @@ function vote() {
     myIncrement("visitors");
     myIncrement("vote0" + moodNumber[selectedVote]);
     getVote(selectedVote);
-    //window.location.href = "thanks.html";
+    window.location.href = "thanks.html";
 }
 
 /*Voting - Mood Buttons*/
