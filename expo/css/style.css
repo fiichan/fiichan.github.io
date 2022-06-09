@@ -77,7 +77,7 @@ body {
 }
 #vote-label {
     font-family: 'Helvetica Neue Regular', Helvetica, Arial, sans-serif;
-    font-size: 18pt;
+    font-size: 14pt;
     line-height: 1;
 
     margin-bottom: 0;
@@ -86,7 +86,7 @@ body {
     font-family: 'Helvetica Neue Light', Helvetica, Arial, sans-serif;
     font-weight: 100;
     text-transform: uppercase;
-    font-size: 30pt;
+    font-size: 25pt;
     line-height: 1;
 
     margin-top: 20px;
@@ -113,30 +113,14 @@ body {
 .mood-btn div {
     font-family: 'Helvetica Neue Light', Helvetica, sans-serif;
     font-weight: 100;
-    font-size: 30pt;
+    font-size: 25pt;
     display: inline-block;
-    height: 62px;
+    height: 55px;
     padding: 10px;
 }
 .mood-btn img {
-    height: 62px;
+    height: 55px;
 }
-/*Regular Btns*/
-/*#mood-btn-01 div {
-    color: #F45453;    
-}
-#mood-btn-02 div {
-    color: #FC9B21;    
-}
-#mood-btn-03 div {
-    color: #FDCF3D;    
-}
-#mood-btn-04 div {
-    color: #91E777;    
-}
-#mood-btn-05 div {
-    color: #00C96C;    
-}*/
 
 /*Submit*/
 #submit {
@@ -178,24 +162,24 @@ body {
 
 /*Thanks*/
 #thanks-heart {
-    height: 145px;
+    height: 100px;
 }
 #thanks-head {
     font-family: 'Helvetica Neue Light', Helvetica, sans-serif;
     text-transform: uppercase;
-    font-size: 60pt;
+    font-size: 45pt;
     line-height: 1.2;
     display: block;
 }
 #thanks-text {
     font-family: 'Helvetica Neue Regular', Helvetica, sans-serif;
-    font-size: 20pt;
+    font-size: 18pt;
     display: block;
 }
 
 /*Sources*/
 #sources {
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 60px;
 }
 #sources.container div {
