@@ -16,7 +16,7 @@ const songDurations = [54000, 49000, 39000, 33000, 28000];
 /* App Key https://keyvalue.immanuel.co/ */
 const appkey = "4arncai3";
 /* Vote variables = vote01, vote02, vote03, vote04, vote05 */
-var mood = 3;
+var mood = 4;
 var visitors = 2;
 
 var activeBtn = "";
@@ -72,6 +72,7 @@ function vote() {
     console.log("ActiveBtn " + selectedVote);
     myIncrement("visitors");
     myIncrement("vote0" + moodNumber[selectedVote]);
+
     getVote(selectedVote);
     //window.location.href = "thanks.html";
 }
@@ -119,23 +120,23 @@ function win() {
 
 /* Main Screen - Mood Functions*/
 function moodSwitch() {
-    if (mood == '1') {
+    if (mood == '1' || mood == 1) {
         moodChange(0);
         //alert(1);
     }
-    if (mood == '2') {
+    if (mood == '2' || mood == 2) {
         moodChange(1);
         //alert(2);
     }
-    if(mood == '3') {
+    if(mood == '3' || mood == 3) {
         moodChange(2);
         //alert(3);
     }
-    if (mood == '4') {
+    if (mood == '4' || mood == 4) {
         moodChange(3);
         //alert(4);
     }
-    if (mood == '5') {
+    if (mood == '5' || mood == 5) {
         moodChange(4);
         //alert(5);
     }
@@ -158,7 +159,7 @@ function moodPercentages() {
 
 function moodChange(index) {
     moodReset();
-
+    
     document.getElementById("mood-label").style.background = moodColors[index];
 
     /*if (index == 0 || index == 4) {
@@ -177,6 +178,7 @@ function moodChange(index) {
     document.getElementById(percentId + moodNumber[index]).style.color = "#000000";
     
     vid.src = videoPath + fileNames[index] + ".mp4";
+
 }
 function moodReset() {
     for(i=0;i<5;++i) {
