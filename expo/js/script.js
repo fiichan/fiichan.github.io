@@ -16,7 +16,7 @@ const songDurations = [54000, 49000, 39000, 33000, 28000];
 /* App Key https://keyvalue.immanuel.co/ */
 const appkey = "4arncai3";
 /* Vote variables = vote01, vote02, vote03, vote04, vote05 */
-var mood = 4;
+var mood = undefined;
 var visitors = 2;
 
 var activeBtn = "";
@@ -46,13 +46,14 @@ function refreshAll() {
     for(var i=0; i<5; ++i) {
         getVote(i);
     }
-    //console.log(votes);
     document.getElementById('visitor-count').innerHTML = visitors;
 
-    getMood();
-    moodSwitch();
     moodPercentages();
     win();
+    moodSwitch();
+    console.log({
+        mood, votes, percentages
+    });
 }
 /*function refreshAll() {
     Promise.all([getVisitors, getMood]).then(values => {
