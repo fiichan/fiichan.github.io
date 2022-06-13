@@ -166,9 +166,6 @@ body {
 }
 
 /*Active Btns*/
-#mood-btn-01.active div, #mood-btn-05.active div{
-    color: white !important;
-}
 #mood-btn-01.active {
     background-color: #F40504;
 }

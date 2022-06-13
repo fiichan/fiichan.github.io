@@ -73,7 +73,7 @@ function vote() {
     myIncrement("visitors");
     myIncrement("vote0" + moodNumber[selectedVote]);
     getVote(selectedVote);
-    window.location.href = "thanks.html";
+    //window.location.href = "thanks.html";
 }
 
 /*Voting - Mood Buttons*/
@@ -95,9 +95,9 @@ function moodBtn(clickedId, index) {
         }
         btn.classList.add("active");
         $( "#" + clickedId + " div img").attr("src", filePath + fileNames[index] + fileActive);
-        if(index == 0 || index == 4) {
+        /*if(index == 0 || index == 4) {
             $( "#" + clickedId + " div img").attr("src", filePath + fileNames[index] + fileWhite);
-        }
+        }*/
         activeBtn = clickedId;
     }
 
@@ -161,13 +161,14 @@ function moodChange(index) {
 
     document.getElementById("mood-label").style.background = moodColors[index];
 
-    if (index == 0 || index == 4) {
+    /*if (index == 0 || index == 4) {
         document.getElementById("mood-label").style.color = "#FFFFFF";
     }
     if (index == 1 || index == 2 || index == 3) {
         document.getElementById("mood-label").style.color = "#000000";
-    }
+    }*/
 
+    document.getElementById("mood-label").style.color = "#000000";
     document.getElementById('mood-label').innerHTML = moodLabels[index];
 
     document.getElementById(moodId + moodNumber[index]).src= filePath + fileNames[index] + fileActive;
