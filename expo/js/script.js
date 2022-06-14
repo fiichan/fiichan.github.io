@@ -16,7 +16,7 @@ const songDurations = [54000, 49000, 39000, 33000, 28000];
 /* App Key https://keyvalue.immanuel.co/ */
 const appkey = "4arncai3";
 /* Vote variables = vote01, vote02, vote03, vote04, vote05 */
-var mood = undefined;
+var mood = 4;
 var visitors = 2;
 
 var activeBtn = "";
@@ -36,8 +36,8 @@ var percentages = [0,0,0,0,0];
 document.addEventListener("DOMContentLoaded", function(event) { 
     refreshAll();
     document.getElementById('visitor-count').innerHTML = visitors;
-    /*visitors = await myGet("visitors");
-    alert(visitors);*/
+    /*Dejarlo 2 minutos para que levante*/
+    //setInterval(refreshAll, songDurations[mood-1]);
     setInterval(refreshAll, 1000);
 });
 
@@ -46,14 +46,13 @@ function refreshAll() {
     for(var i=0; i<5; ++i) {
         getVote(i);
     }
+    //console.log(votes);
     document.getElementById('visitor-count').innerHTML = visitors;
 
+    //getMood();
+    moodSwitch();
     moodPercentages();
     win();
-    moodSwitch();
-    console.log({
-        mood, votes, percentages
-    });
 }
 /*function refreshAll() {
     Promise.all([getVisitors, getMood]).then(values => {
@@ -112,11 +111,34 @@ function moodBtn(clickedId, index) {
 /* Define % and mood */
 function win() {
     var max = Math.max(...votes);
-    mood = moodNumber[votes.indexOf(max)];
+    var index = votes.indexOf(max);
+
+    mood = moodNumber[index];
+    tie(max, index);
+
+
     /*console.log({
         votes,
         mood
     });*/
+}
+
+function tie(max, winner) {
+    var tie = false;
+
+    for(var i=winner+1; i<5; ++i) {
+        if(votes[i] == max) {
+            tie = true;
+        }
+    }
+
+    if(tie) {
+        document.getElementById("text-tie").classList.remove("hidden");
+    }
+    if(!tie) {
+        document.getElementById("text-tie").classList.add("hidden");
+    }
+
 }
 
 /* Main Screen - Mood Functions*/
@@ -162,13 +184,6 @@ function moodChange(index) {
     moodReset();
     
     document.getElementById("mood-label").style.background = moodColors[index];
-
-    /*if (index == 0 || index == 4) {
-        document.getElementById("mood-label").style.color = "#FFFFFF";
-    }
-    if (index == 1 || index == 2 || index == 3) {
-        document.getElementById("mood-label").style.color = "#000000";
-    }*/
 
     document.getElementById("mood-label").style.color = "#000000";
     document.getElementById('mood-label').innerHTML = moodLabels[index];
