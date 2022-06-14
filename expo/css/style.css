@@ -184,6 +184,18 @@ body {
     background-color: #00A358;
 }
 
+#on-btn.active {
+    background-color: #00A358;
+}
+#off-btn.active {
+    background-color: #F40504;
+}
+
+.time-btn.active {
+    background-color: #00356B;
+    color: white;
+}
+
 /*Thanks*/
 #thanks-heart {
     height: 100px;
@@ -200,6 +212,19 @@ body {
     font-size: 18pt;
     display: block;
 }
+
+/*Override*/
+.remote-btn {
+    font-family: 'Helvetica Neue Light', Helvetica, sans-serif;
+    font-size: 16pt;
+
+    height: 100px;
+    min-width: 100px;
+    margin: 0 10px 10px 0;
+    border: 0;
+}
+
+
 
 /*Sources*/
 #sources {
