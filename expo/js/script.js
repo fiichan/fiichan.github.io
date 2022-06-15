@@ -185,7 +185,8 @@ function moodChange(index) {
     
     document.getElementById("mood-label").style.background = moodColors[index];
 
-    document.getElementById("mood-label").style.color = "#000000";
+    //document.getElementById("mood-label").style.color = "#000000";
+    document.getElementById("mood-label").style.color = "#ffffff";
     document.getElementById('mood-label').innerHTML = moodLabels[index];
 
     document.getElementById(moodId + moodNumber[index]).src= filePath + fileNames[index] + fileActive;
