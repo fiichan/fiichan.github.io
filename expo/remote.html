@@ -25,19 +25,19 @@
         </div>
         <div>
             <p id="vote-label">Mood</p>
-            <button id="mood-btn-01" class="remote-btn mood-r-btn" onclick="">
+            <button id="mood-btn-01" class="remote-btn mood-r-btn" onclick="setParams(this.id, 0, 'mood')">
                 I hated it
             </button>
-            <button id="mood-btn-02" class="remote-btn mood-r-btn" onclick="">
+            <button id="mood-btn-02" class="remote-btn mood-r-btn" onclick="setParams(this.id, 1, 'mood')">
                 I disliked it
             </button>
-            <button id="mood-btn-03" class="remote-btn mood-r-btn" onclick="">
+            <button id="mood-btn-03" class="remote-btn mood-r-btn" onclick="setParams(this.id, 2, 'mood')">
                 I didn't mind
             </button>
-            <button id="mood-btn-04" class="remote-btn mood-r-btn" onclick="">
+            <button id="mood-btn-04" class="remote-btn mood-r-btn" onclick="setParams(this.id, 3, 'mood')">
                 I liked it
             </button>
-            <button id="mood-btn-05" class="remote-btn mood-r-btn" onclick="">
+            <button id="mood-btn-05" class="remote-btn mood-r-btn active" onclick="setParams(this.id, 4, 'mood')">
                 I loved it
             </button>
         </div>
@@ -45,13 +45,13 @@
 
         <div>
             <p id="vote-label">Time</p>
-            <button id="" class="remote-btn time-btn" onclick="">
+            <button id="time-btn-01" class="remote-btn time-btn active" onclick="setParams(this.id, 0, 'time')">
                 5
             </button>
-            <button id="" class="remote-btn time-btn" onclick="">
+            <button id="time-btn-02" class="remote-btn time-btn" onclick="setParams(this.id, 1, 'time')">
                 10
             </button>
-            <button id="" class="remote-btn time-btn" onclick="">
+            <button id="time-btn-03" class="remote-btn time-btn" onclick="setParams(this.id, 2, 'time')">
                 15
             </button>
         </div>
