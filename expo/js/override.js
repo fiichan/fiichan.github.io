@@ -9,6 +9,8 @@ const appkey = "4arncai3";
 var vid = document.getElementById("main-video");
 const videoPath = "videos/";
 
+var override = true;
+
 /*MAIN*/
 document.addEventListener("DOMContentLoaded", function(event) { 
     //refreshAll();
@@ -22,6 +24,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
 document.body.addEventListener("click", () => {
     vid.play();
 })
+
+/*Remote on click functions*/
+$("#on-btn").click(function() {
+    $("#off-btn").removeClass("active");
+    override = true;
+});
+$("#off-btn").click(function() {
+    $("#on-btn").removeClass("active");
+    override = false;
+});
+
+$(".remote-btn").click(function() {
+    if($(this).hasClass("active")) {
+        $(this).removeClass("active");
+    }
+    else {
+        $(this).addClass("active");
+    }
+});
+
 
 /*Andrey mods*/
 async function myGet(itemkey) {
