@@ -10,6 +10,9 @@ Green: #00A358
 body {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
 }
+#projector {
+    background-color: black;
+}
 
 .container {
     padding: 40px 0 10px 0;
@@ -19,11 +22,19 @@ body {
     text-align: center;
 }
 
+#projector .container {
+    background-color: white;
+    width: 50vw;
+    min-height: 100vh;
+    position: relative;
+    left: 25%;
+}
+
 /*Text*/
 #text-container {
     text-align: center;
     padding-top: 60px;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
 }
 #text {
     width: 70%;
@@ -226,6 +237,9 @@ body {
     min-width: 100px;
     margin: 0 10px 10px 0;
     border: 0;
+}
+#face-row.override {
+    margin-top: 60px;
 }
 
 

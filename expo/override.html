@@ -11,22 +11,22 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 
-    <body>
-        <div class="container">
+    <body id="projector">
+        <div class="container main">
             <div id="video-container">
-              <video id ="main-video" width="650" height="650" autoplay loop controls muted preload="auto">
+              <video id="main-video" width="680" height="680" autoplay loop controls muted preload="auto">
                 <source src="videos/05-Happiest.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             </div>
             
-            <div id="text-container">
+            <!--div id="text-container">
                 <p id="text">
                     Manual mode
                 </p>
-            </div>
+            </div-->
            
-            <div id="face-row">
+            <div id="face-row" class="override">
               <div class="mood-face">
                 <img id="mood-01" src="img/moods/01-Saddest.png">
               </div>
