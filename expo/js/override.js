@@ -26,12 +26,18 @@ var prevVid = videoIndex;
 var activeMoodBtn = "mood-btn-05";
 
 /*MAIN*/
-document.addEventListener("DOMContentLoaded", function(event) { 
+document.addEventListener("DOMContentLoaded", function(event) {
     refreshAll();
     setInterval(refreshAll, 1000);
 });
 
 function refreshAll() {
+    getOverride();
+    if(override == false && window.location.pathname.includes('override')) {
+        console.log('override off');
+        window.location.href = "index.html";
+    }
+    
     getChange();
 
     if(change) {
@@ -55,14 +61,22 @@ document.body.addEventListener("click", () => {
 })
 
 /*Remote on click functions*/
-$("#on-btn").click(function() {
-    $("#off-btn").removeClass("active");
+function overrideOn() {
+    document.getElementById("on-btn").classList.add("active");
+    document.getElementById("off-btn").classList.remove("active");
+
     override = true;
-});
-$("#off-btn").click(function() {
-    $("#on-btn").removeClass("active");
+    myUpdate("override", "true");
+    console.log(override);
+}
+function overrideOff() {
+    document.getElementById("off-btn").classList.add("active");
+    document.getElementById("on-btn").classList.remove("active");
+
     override = false;
-});
+    myUpdate("override", "false");
+    console.log(override);
+}
 
 function setParams(clickedId, index) {
     var btn = document.getElementById(clickedId);

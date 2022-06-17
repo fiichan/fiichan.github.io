@@ -16,13 +16,14 @@
 <body>
     <div id="vote-container" class="container">
         <div>
-            <button id="on-btn" class="remote-btn" onclick="">
-                On
-            </button>
-            <button id="off-btn" class="remote-btn active" onclick="">
+            <button id="off-btn" class="remote-btn" onclick="overrideOff()">
                 Off
             </button>
+            <button id="on-btn" class="remote-btn active" onclick="overrideOn()">
+                On
+            </button>
         </div>
+        <hr>
         <div>
             <p id="vote-label">Mood</p>
             <button id="mood-btn-01" class="remote-btn mood-r-btn" onclick="setParams(this.id, 0)">

@@ -22,6 +22,8 @@ var visitors = 2;
 var activeBtn = "";
 var selectedVote = 0;
 
+var override = false;
+
 
 /* Votes */
 var vote01 = 0;
@@ -42,6 +44,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function refreshAll() {
+    getOverride();
+    if(override == true && window.location.pathname.includes('index')) {
+        console.log('override on');
+        window.location.href = "override.html";
+    }
+
     getVisitors();
     for(var i=0; i<5; ++i) {
         getVote(i);
@@ -74,7 +82,7 @@ function vote() {
     myIncrement("vote0" + moodNumber[selectedVote]);
 
     getVote(selectedVote);
-    //window.location.href = "thanks.html";
+    window.location.href = "thanks.html";
 }
 
 /*Voting - Mood Buttons*/
@@ -145,29 +153,26 @@ function tie(max, winner) {
 function moodSwitch() {
     if (mood == '1' || mood == 1) {
         moodChange(0);
-        //alert(1);
     }
     if (mood == '2' || mood == 2) {
         moodChange(1);
-        //alert(2);
     }
     if(mood == '3' || mood == 3) {
         moodChange(2);
-        //alert(3);
     }
     if (mood == '4' || mood == 4) {
         moodChange(3);
-        //alert(4);
     }
     if (mood == '5' || mood == 5) {
         moodChange(4);
-        //alert(5);
     }
 
 }
 function moodPercentages() {
     for(var i=0; i<5; ++i) {
-        var calc = votes[i]*100 / visitors;
+        var reducer = (accumulator, curr) => accumulator + curr;
+
+        var calc = votes[i]*100 / votes.reduce(reducer);
 
         if(calc%1 != 0) {
             percentages[i] = calc.toFixed(2);
@@ -238,6 +243,12 @@ function getMood() {
 function getVote(index) {
     return myGet("vote0" + moodNumber[index]).then(function (result) {
         votes[index] = parseInt(result);
+    });
+}
+
+function getOverride() {
+    return myGet("override").then(function (result) {
+      override = (result === 'true');
     });
 }
 
