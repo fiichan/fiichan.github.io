@@ -22,7 +22,7 @@ change = true/false
 var override = true;
 var change = false;
 var videoIndex = 4;
-
+var prevVid = videoIndex;
 var activeMoodBtn = "mood-btn-05";
 
 /*MAIN*/
@@ -36,7 +36,13 @@ function refreshAll() {
 
     if(change) {
         getVideo();
+        if (videoIndex === prevVid) {
+            return
+        }
         moodChange(videoIndex);
+        console.log({
+            videoIndex, change, override, prevVid
+        })
 
         change = false;
         myUpdate('change', false);
@@ -96,6 +102,9 @@ function moodChange(index) {
 
     document.getElementById(moodId + moodNumber[index]).src = filePath + fileNames[index] + fileActive;    
     vid.src = videoPath + fileNames[index] + ".mp4";
+    console.log({
+        index, 'src': vid.src
+    })
 }
 function moodReset() {
     for(i=0;i<5;++i) {
@@ -126,6 +135,7 @@ function getChange() {
 }
 function getVideo() {
     return myGet("overrideVideo").then(function (result) {
+        prevVid = videoIndex;
         videoIndex = parseInt(result);
     });
 }
