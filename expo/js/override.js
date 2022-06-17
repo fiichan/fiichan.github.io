@@ -1,7 +1,11 @@
 const moodColors = ["#F40504", "#FF9C03", "#FBFB0D", "#72ED4C", "#00A358"];
 const moodNumber = ["1", "2", "3", "4", "5"];
-const fileNames = ["01-Saddest", "02-Sad", "03-Meh", "04-Happy", "05-Happiest"];
 const durations = [5000, 10000, 15000];
+
+const filePath = "img/moods/";
+const moodId = "mood-0";
+const fileNames = ["01-Saddest", "02-Sad", "03-Meh", "04-Happy", "05-Happiest"];
+const fileActive = "-Active.png";
 
 /* App Key https://keyvalue.immanuel.co/ */
 const appkey = "4arncai3";
@@ -9,24 +13,34 @@ const appkey = "4arncai3";
 var vid = document.getElementById("main-video");
 const videoPath = "videos/";
 
+/* Server variables
+overrideVideo = [0,1,2,3,4] -> videoIndex
+override = true/false
+change = true/false
+*/
+
 var override = true;
-var videoNum = 5;
-var refreshRate = 5000;
+var change = false;
+var videoIndex = 4;
 
 var activeMoodBtn = "mood-btn-05";
-var activeTimeBtn = "time-btn-01";
 
 /*MAIN*/
 document.addEventListener("DOMContentLoaded", function(event) { 
-    //refreshAll();
-    //document.getElementById('visitor-count').innerHTML = visitors;
-    /*Dejarlo 2 minutos para que levante*/
-    //setInterval(refreshAll, songDurations[mood-1]);
-    //setInterval(refreshAll, 1000);
+    refreshAll();
+    setInterval(refreshAll, 1000);
 });
 
 function refreshAll() {
+    getChange();
 
+    if(change) {
+        getVideo();
+        moodChange(videoIndex);
+
+        change = false;
+        myUpdate('change', false);
+    }
 }
 
 /*Play init video*/
@@ -35,16 +49,6 @@ document.body.addEventListener("click", () => {
 })
 
 /*Remote on click functions*/
-/*$(".remote-btn").click(function() {
-    if($(this).hasClass("active")) {
-        $(this).removeClass("active");
-    }
-    else {
-        $(this).addClass("active");
-    }
-});*/
-
-
 $("#on-btn").click(function() {
     $("#off-btn").removeClass("active");
     override = true;
@@ -54,71 +58,50 @@ $("#off-btn").click(function() {
     override = false;
 });
 
-function setParams(clickedId, index, btnType) {
+function setParams(clickedId, index) {
     var btn = document.getElementById(clickedId);
     var activeBtn = "";
 
-    if(btnType == 'mood') {
-        activeBtn = activeMoodBtn;
-    }
-    if(btnType == 'time') {
-        activeBtn = activeTimeBtn;
-    }
+    activeBtn = activeMoodBtn;
 
     if (btn.classList.contains('active')) {
         btn.classList.remove("active");
 
-        //if none is active, turn to defaults
-        if(btnType == 'mood') {
-            activeMoodBtn = "";
-            videoNum = 5;
-        }
-        if(btnType == 'time') {
-            activeTimeBtn = "";
-            refreshRate = 5000;
-        }
+        activeMoodBtn = "";
+        videoIndex = "";
     }
     else {
         if(activeBtn) {
-            var last = activeBtn.charAt(activeBtn.length - 1);
-
             document.getElementById(activeBtn).classList.remove("active");
         }
         btn.classList.add("active");
         
-        if(btnType == 'mood') {
-            activeMoodBtn = clickedId;
-            videoNum = moodNumber[index];
-        }
-        if(btnType == 'time') {
-            activeTimeBtn = clickedId;
-            refreshRate = durations[index];
-        }
+        activeMoodBtn = clickedId;
+        videoIndex = index;
     }
-    console.log(activeTimeBtn);
-    console.log(refreshRate);
-    console.log(btnType);
+    //console.log(activeTimeBtn);
+    //console.log(refreshRate);
+    //console.log(btnType);
+}
+
+function submitMood() {
+    myUpdate('overrideVideo', videoIndex);
+    myUpdate('change', true);
 }
 
 /*Switchers*/
-/*function moodChange(index) {    
-    document.getElementById('mood-label').innerHTML = moodLabels[index];
-
-    document.getElementById(moodId + moodNumber[index]).src= filePath + fileNames[index] + fileActive;
-
-    document.getElementById(percentId + moodNumber[index]).style.fontWeight = "bold";
-    document.getElementById(percentId + moodNumber[index]).style.color = "#000000";
+function moodChange(index) {
+    moodReset();
     
-    vid.src = videoPath + fileNames[index] + ".mp4";
 
+    document.getElementById(moodId + moodNumber[index]).src = filePath + fileNames[index] + fileActive;    
+    vid.src = videoPath + fileNames[index] + ".mp4";
 }
 function moodReset() {
     for(i=0;i<5;++i) {
-        document.getElementById(moodId + moodNumber[i]).src= filePath + fileNames[i] + ".png";
-        document.getElementById(percentId + moodNumber[i]).style.color = "#7F7F7F";
-        document.getElementById(percentId + moodNumber[i]).style.fontWeight = "400";
+        document.getElementById(moodId + moodNumber[i]).src = filePath + fileNames[i] + ".png";
     }
-}*/
+}
 
 
 
@@ -131,27 +114,31 @@ async function myGet(itemkey) {
     return result
 }
 
-function getVisitors() {
-    return myGet("override-value").then(function (result) {
-      visitors = parseInt(result);
+function getOverride() {
+    return myGet("override").then(function (result) {
+      override = (result === 'true');
+    });
+}
+function getChange() {
+    return myGet("change").then(function (result) {
+      change = (result === 'true');
+    });
+}
+function getVideo() {
+    return myGet("overrideVideo").then(function (result) {
+        videoIndex = parseInt(result);
     });
 }
 
-/*Key Original Functions*/
-var getValue = function (itemkey) {
-    $.ajax({
-        type: "GET",
-        url: "https://keyvalue.immanuel.co/api/KeyVal/GetValue/" + appkey + "/" + itemkey,
-        contentType: false,
-        processData: false
-    }).done(function (data) {
-        //visitors = data;
-        //alert(visitors);
-        return data;
-    }).fail(function(err){
-
-    });
+async function myUpdate(itemkey, value) {
+    const result = await $.ajax({
+      url: "https://keyvalue.immanuel.co/api/KeyVal/UpdateValue/4arncai3/" + itemkey + '/' + value,
+      type: 'POST'
+    })
+    return result
 }
+
+/*Original*/
 var updateValue = function (itemkey, itemval) {
     $.ajax({
         type: "POST",
