@@ -48,17 +48,39 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
     //document.getElementById('visitor-count').innerHTML = visitors;
-    sleep(1000);
-    
-    loading = setInterval(loadingScreen, 500);
+    //sleep(1000);
+    //loading = setInterval(loadingScreen, 500);
     //loading = setInterval(load, 500);
+
+
     //view = setInterval(refreshAll, songDurations[time]);
     //view = setInterval(refreshAll, 500);
     //sleep(5000);
     //clearInterval(view);
-    view = setInterval(refreshAll, songDurations[mood-1]);
+    view = setInterval(myload, 1000);
+    //view = setInterval(refreshAll, songDurations[mood-1]);
     //setInterval(refreshAll, 1000);
 });
+
+function myload() {
+    /*if(loadVotesDone == 15) {
+        console.log('it1', loadVotesDone);
+        document.getElementById("visitor-count").classList.add("hidden");
+    }
+    if(loadVotesDone == 20) {
+        console.log('it2', loadVotesDone);
+
+        document.getElementById("percent-row").classList.remove("hidden");
+        document.getElementById("visitor-count").classList.remove("hidden");
+    }*/
+
+    if (mood === 6) {
+        return;
+    }
+    clearInterval(view);
+    refreshAll();
+    view = setInterval(refreshAll, songDurations[mood-1]);
+}
 
 function load() {
     if(loadVotesDone < 5) {
@@ -81,10 +103,11 @@ function load() {
         done = true;
         time = mood-1;
         clearInterval(loading);
-        clearInterval(view);
+        //clearInterval(view);
     }
 }
 
+//NO ME TOQUES ESTA FUNCION
 function loadingScreen() {
     if(loadVotesDone == 10) {
         document.getElementById("text-tie").classList.add("hidden");
@@ -235,19 +258,14 @@ function moodSwitch() {
 
 }
 function moodPercentages() {
-    /*var reducer = (accumulator, curr) => {
-        console.log({
-            accumulator, curr
-        })    
+    var reducer = (accumulator, curr) => { 
         return accumulator + curr
     };
-    console.log({votes, totalVotes});
     var totalVotes = votes.reduce(reducer);
-    console.log({votes, totalVotes});*/
 
     for(var i=0; i<5; ++i) {
-        //var calc = votes[i]*100 / totalVotes;
-        var calc = votes[i]*100 / visitors;
+        var calc = votes[i]*100 / totalVotes;
+        //var calc = votes[i]*100 / visitors;
         if(calc%1 != 0) {
             percentages[i] = calc.toFixed(2);
         }
