@@ -24,6 +24,7 @@ var change = false;
 var videoIndex = 4;
 var prevVid = videoIndex;
 var activeMoodBtn = "mood-btn-05";
+var volume = 100;
 
 /*MAIN*/
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -34,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function refreshAll() {
     getOverride();
     if(override == false && window.location.pathname.includes('override')) {
-        console.log('override off');
         window.location.href = "index.html";
     }
     

@@ -5,48 +5,123 @@ const moodNumber = ["1", "2", "3", "4", "5"];
 const moodId = "mood-0";
 const percentId = "percent-0";
 const filePath = "img/moods/";
-const fileNames = ["01-Saddest", "02-Sad", "03-Meh", "04-Happy", "05-Happiest"];
+const fileNames = ["01-Saddest", "02-Sad", "03-Meh", "04-Happy", "05-Happiest", "06-Loading"];
 const fileActive = "-Active.png";
 const fileWhite = "-White.png";
 
 var vid = document.getElementById("main-video");
 const videoPath = "videos/";
-const songDurations = [54000, 49000, 39000, 33000, 28000];
+const songDurations = [54000, 49000, 39000, 33000, 28000, 1000];
 
 /* App Key https://keyvalue.immanuel.co/ */
 const appkey = "4arncai3";
 /* Vote variables = vote01, vote02, vote03, vote04, vote05 */
-var mood = 4;
+var mood = 6;
 var visitors = 2;
 
 var activeBtn = "";
 var selectedVote = 0;
 
 var override = false;
+var loading = "";
+var view = "";
 
 
 /* Votes */
-var vote01 = 0;
-var vote02 = 1;
-var vote03 = 2;
-var vote04 = 3;
-var vote05 = 4;
 var votes = [0,0,0,0,0];
+var loadVotesDone = 0;
 var percentages = [0,0,0,0,0];
 
+var time = 5;
+var done = false;
+
 /*MAIN*/
-document.addEventListener("DOMContentLoaded", function(event) { 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
     refreshAll();
-    document.getElementById('visitor-count').innerHTML = visitors;
-    /*Dejarlo 2 minutos para que levante*/
-    //setInterval(refreshAll, songDurations[mood-1]);
-    setInterval(refreshAll, 1000);
+    document.getElementById("text-tie").classList.add("hidden");
+    refreshAll();
+    document.getElementById("text-tie").classList.add("hidden");
+
+
+    //document.getElementById('visitor-count').innerHTML = visitors;
+    sleep(1000);
+    
+    loading = setInterval(loadingScreen, 500);
+    //loading = setInterval(load, 500);
+    //view = setInterval(refreshAll, songDurations[time]);
+    //view = setInterval(refreshAll, 500);
+    //sleep(5000);
+    //clearInterval(view);
+    view = setInterval(refreshAll, songDurations[mood-1]);
+    //setInterval(refreshAll, 1000);
 });
+
+function load() {
+    if(loadVotesDone < 5) {
+        console.log('not done', loadVotesDone);
+        view = setInterval(dumbRefresh, 500);
+        //view = setTimeout(refreshAll, 500);
+        //clearInterval(view);
+        //refreshAll();
+        //sleep(2000);
+    }
+    if(loadVotesDone >= 5 && loadVotesDone < 10) {
+        console.log('it2', loadVotesDone);
+        view = setInterval(dumbRefresh, 500);
+        //clearInterval(view);
+        //view = setTimeout(refreshAll, 500);
+        //clearTimeout(view);
+    }
+    if(loadVotesDone > 10) {
+        console.log('done', loadVotesDone);
+        done = true;
+        time = mood-1;
+        clearInterval(loading);
+        clearInterval(view);
+    }
+}
+
+function loadingScreen() {
+    if(loadVotesDone == 10) {
+        document.getElementById("text-tie").classList.add("hidden");
+        console.log('not done', loadVotesDone);
+        vid.src = videoPath + fileNames[5] + ".mp4";
+    }
+    if(loadVotesDone == 15) {
+        console.log('it2', loadVotesDone);
+        document.getElementById("loading-text").classList.add("hidden");
+        document.getElementById("text-tie").classList.add("hidden");
+
+        document.getElementById("text").classList.remove("hidden");
+        document.getElementById("face-row").classList.remove("hidden");
+    }
+    if(loadVotesDone >= 20) {
+        console.log('done', loadVotesDone);
+        document.getElementById("percent-row").classList.remove("hidden");
+        done = true;
+        clearInterval(loading);
+    }
+}
+
+function dumbRefresh() {
+    getVisitors();
+    for(var i=0; i<5; ++i) {
+        getVote(i);
+    }
+    document.getElementById('visitor-count').innerHTML = visitors;
+
+    moodSwitch();
+    moodPercentages();
+    win();
+}
 
 function refreshAll() {
     getOverride();
     if(override == true && window.location.pathname.includes('index')) {
-        console.log('override on');
         window.location.href = "override.html";
     }
 
@@ -54,11 +129,10 @@ function refreshAll() {
     for(var i=0; i<5; ++i) {
         getVote(i);
     }
-    //console.log(votes);
     document.getElementById('visitor-count').innerHTML = visitors;
 
-    //getMood();
     moodSwitch();
+
     moodPercentages();
     win();
 }
@@ -104,9 +178,7 @@ function moodBtn(clickedId, index) {
         }
         btn.classList.add("active");
         $( "#" + clickedId + " div img").attr("src", filePath + fileNames[index] + fileActive);
-        /*if(index == 0 || index == 4) {
-            $( "#" + clickedId + " div img").attr("src", filePath + fileNames[index] + fileWhite);
-        }*/
+
         activeBtn = clickedId;
     }
 
@@ -123,12 +195,6 @@ function win() {
 
     mood = moodNumber[index];
     tie(max, index);
-
-
-    /*console.log({
-        votes,
-        mood
-    });*/
 }
 
 function tie(max, winner) {
@@ -169,11 +235,19 @@ function moodSwitch() {
 
 }
 function moodPercentages() {
+    /*var reducer = (accumulator, curr) => {
+        console.log({
+            accumulator, curr
+        })    
+        return accumulator + curr
+    };
+    console.log({votes, totalVotes});
+    var totalVotes = votes.reduce(reducer);
+    console.log({votes, totalVotes});*/
+
     for(var i=0; i<5; ++i) {
-        var reducer = (accumulator, curr) => accumulator + curr;
-
-        var calc = votes[i]*100 / votes.reduce(reducer);
-
+        //var calc = votes[i]*100 / totalVotes;
+        var calc = votes[i]*100 / visitors;
         if(calc%1 != 0) {
             percentages[i] = calc.toFixed(2);
         }
@@ -243,6 +317,8 @@ function getMood() {
 function getVote(index) {
     return myGet("vote0" + moodNumber[index]).then(function (result) {
         votes[index] = parseInt(result);
+        loadVotesDone += 1;
+        //console.log(loadVotesDone);
     });
 }
 

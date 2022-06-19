@@ -40,7 +40,7 @@ body {
     width: 70%;
     margin: auto;
 }
-#text, #text span {
+#text, #text span, #loading-text {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 20pt;
     font-weight: 400;
@@ -55,6 +55,10 @@ body {
 }
 #text-tie {
     font-size: 14pt;
+}
+
+#loading-text.hidden, #text.hidden {
+    display: none;
 }
 
 /*Faces*/
@@ -240,6 +244,10 @@ body {
 }
 #face-row.override {
     margin-top: 60px;
+}
+#vol {
+    width: 100%;
+    height: 50px;
 }
 
 

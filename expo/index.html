@@ -15,21 +15,24 @@
         <div class="container main">
             <div id="video-container">
               <video id ="main-video" width="620" height="620" autoplay loop controls muted preload="auto">
-                <source src="videos/05-Happiest.mp4" type="video/mp4">
+                <source src="videos/06-Loading.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             </div>
             
             <div id="text-container">
-              <p id="text">
-                Most of the <span id="visitor-count">59</span> visitors of this exhibition <span id="mood-label">hated</span> working during their vacations.
-              </p>
-              <p id="text-tie" class="hidden">
-                Actually, the vote is tied. But we're playing the worst song, for dramatic purposes.
-              </p>
+                <p id="loading-text">
+                    Loading...
+                </p>
+                <p id="text" class="hidden">
+                    Most of the <span id="visitor-count">59</span> visitors of this exhibition <span id="mood-label">hated</span> working during their vacations.
+                </p>
+                <p id="text-tie" class="hidden">
+                    Actually, the vote is tied. But we're playing the worst song, for dramatic purposes.
+                </p>
             </div>
            
-            <div id="face-row">
+            <div id="face-row" class="hidden">
               <div class="mood-face">
                 <img id="mood-01" src="img/moods/01-Saddest.png">
               </div>
@@ -47,7 +50,7 @@
               </div>
             </div>
 
-            <div id="percent-row">
+            <div id="percent-row" class="hidden">
               <div class="mood-face">
                 <p id="percent-01">50%</p>
               </div>
