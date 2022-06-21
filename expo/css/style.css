@@ -34,7 +34,7 @@ body {
 /*Text*/
 #text-container {
     text-align: center;
-    padding-top: 60px;
+    padding-top: 90px;
     padding-bottom: 10px;
 }
 #text {
@@ -43,7 +43,7 @@ body {
 }
 #text, #text span, #loading-text {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
-    font-size: 20pt;
+    font-size: 25pt;
     font-weight: 400;
     line-height: 1;
     text-align: center;
