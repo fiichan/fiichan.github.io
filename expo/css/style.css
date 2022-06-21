@@ -9,6 +9,7 @@ Green: #00A358
 
 body {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    overflow: hidden;
 }
 #projector {
     background-color: black;
