@@ -58,7 +58,7 @@ body {
     font-size: 14pt;
 }
 
-#loading-text.hidden, #text.hidden, #visitor-count {
+#loading-text.hidden, #text.hidden {
     display: none;
 }
 
