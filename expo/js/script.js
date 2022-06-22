@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById("text-tie").classList.add("hidden");
 
 
-    document.getElementById('visitor-count').innerHTML = visitors;
+    //document.getElementById('visitor-count').innerHTML = visitors;
     //sleep(1000);
     //loading = setInterval(loadingScreen, 500);
     //loading = setInterval(load, 500);
@@ -57,9 +57,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //view = setInterval(refreshAll, 500);
     //sleep(5000);
     //clearInterval(view);
-    setInterval(overrideSwitch, 1000);
     view = setInterval(myload, 1000);
-    setInterval(loadingScreen, 1000);
     //view = setInterval(refreshAll, songDurations[mood-1]);
     //setInterval(refreshAll, 1000);
 });
@@ -82,13 +80,6 @@ function myload() {
     clearInterval(view);
     refreshAll();
     view = setInterval(refreshAll, songDurations[mood-1]);
-}
-
-function overrideSwitch() {
-    getOverride();
-    if(override == true && window.location.pathname.includes('index')) {
-        window.location.href = "override.html";
-    }
 }
 
 function load() {
@@ -116,35 +107,47 @@ function load() {
     }
 }
 
+//NO ME TOQUES ESTA FUNCION
 function loadingScreen() {
     if(loadVotesDone == 10) {
         document.getElementById("text-tie").classList.add("hidden");
         console.log('not done', loadVotesDone);
-        //vid.src = videoPath + fileNames[5] + ".mp4";
+        vid.src = videoPath + fileNames[5] + ".mp4";
     }
     if(loadVotesDone == 15) {
         console.log('it2', loadVotesDone);
-        document.getElementById("loading-text").classList.remove("hidden");
+        document.getElementById("loading-text").classList.add("hidden");
         document.getElementById("text-tie").classList.add("hidden");
 
-        //document.getElementById("text").classList.remove("hidden");
-        //document.getElementById("face-row").classList.remove("hidden");
-        //alert(123);
+        document.getElementById("text").classList.remove("hidden");
+        document.getElementById("face-row").classList.remove("hidden");
     }
-    if(loadVotesDone == 20) {
+    if(loadVotesDone >= 20) {
         console.log('done', loadVotesDone);
-        document.getElementById("loading-text").classList.add("hidden");
         document.getElementById("percent-row").classList.remove("hidden");
-        //done = true;
+        done = true;
         clearInterval(loading);
-    }
-    if(loadVotesDone > 20) {
-        console.log('super done', loadVotesDone);
-        return;
     }
 }
 
+function dumbRefresh() {
+    getVisitors();
+    for(var i=0; i<5; ++i) {
+        getVote(i);
+    }
+    document.getElementById('visitor-count').innerHTML = visitors;
+
+    moodSwitch();
+    moodPercentages();
+    win();
+}
+
 function refreshAll() {
+    getOverride();
+    if(override == true && window.location.pathname.includes('index')) {
+        window.location.href = "override.html";
+    }
+
     getVisitors();
     for(var i=0; i<5; ++i) {
         getVote(i);

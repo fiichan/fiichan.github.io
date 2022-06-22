@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 function refreshAll() {
     getOverride();
-
     if(override == false && window.location.pathname.includes('override')) {
         window.location.href = "index.html";
     }
@@ -53,17 +52,6 @@ function refreshAll() {
 
         change = false;
         myUpdate('change', false);
-    }
-}
-
-function loadRemote() {
-    if(window.location.pathname.includes('remote')) {
-        if(override == true) {
-            document.getElementById("on-btn").classList.add("active");
-        }
-        if(override == false) {
-            document.getElementById("off-btn").classList.add("active");
-        }
     }
 }
 
