@@ -299,3 +299,13 @@ body {
 .footnotes p {
     font-size: 10pt;
 }
+
+li {
+    font-size: 1.125rem;
+    font-weight: 200;
+    line-height: 1.8;
+}
+
+#spanish #sources section {
+    margin-bottom: 30px;
+}
