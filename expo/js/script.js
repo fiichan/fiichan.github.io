@@ -23,6 +23,7 @@ var activeBtn = "";
 var selectedVote = 0;
 
 var override = false;
+var mute = false;
 var loading = "";
 var view = "";
 
@@ -59,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //clearInterval(view);
     view = setInterval(overrideSwitch, 1000);
     view = setInterval(myload, 1000);
+    mutestate = setInterval(setSound, 1000);
     //view = setInterval(refreshAll, songDurations[mood-1]);
     //setInterval(refreshAll, 1000);
 });
@@ -126,7 +128,6 @@ function refreshAll() {
     win();
 
     vid.play();
-    vid.muted = false;
 }
 /*function refreshAll() {
     Promise.all([getVisitors, getMood]).then(values => {
@@ -135,6 +136,23 @@ function refreshAll() {
       moodSwitch();
     });
 }*/
+
+function setSound() {
+    getMute();
+
+    if(vid.muted === mute) {
+        return
+    }
+
+    vid.play();
+    console.log(mute);
+    if(mute == true) {
+        vid.muted = true;
+    }
+    if(mute == false) {
+        vid.muted = false;
+    }
+}
 
 /*Play init video*/
 document.body.addEventListener("click", () => {
@@ -312,6 +330,12 @@ function getVote(index) {
 function getOverride() {
     return myGet("override").then(function (result) {
       override = (result === 'true');
+    });
+}
+
+function getMute() {
+    return myGet("mute").then(function (result) {
+      mute = (result === 'true');
     });
 }
 
