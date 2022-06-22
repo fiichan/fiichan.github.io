@@ -9,10 +9,10 @@ Green: #00A358
 
 body {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
-    overflow: hidden;
 }
 #projector {
     background-color: black;
+    overflow: hidden;
 }
 
 .container {
@@ -295,4 +295,7 @@ body {
     font-size: 20pt;
     line-height: 1.3;
     margin-bottom: 10px;
+}
+.footnotes p {
+    font-size: 10pt;
 }
