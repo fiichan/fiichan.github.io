@@ -20,6 +20,7 @@ change = true/false
 */
 
 var override = true;
+var mute = true;
 var change = false;
 var videoIndex = 4;
 var prevVid = videoIndex;
@@ -38,6 +39,7 @@ function refreshAll() {
         window.location.href = "index.html";
     }
     
+    //setSound();
     getChange();
 
     if(change) {
@@ -67,7 +69,6 @@ function overrideOn() {
 
     override = true;
     myUpdate("override", "true");
-    console.log(override);
 }
 function overrideOff() {
     document.getElementById("off-btn").classList.add("active");
@@ -75,7 +76,24 @@ function overrideOff() {
 
     override = false;
     myUpdate("override", "false");
-    console.log(override);
+}
+
+function muteBtn() {
+    document.getElementById("mute-btn").classList.add("active");
+    document.getElementById("unmute-btn").classList.remove("active");
+
+    mute = true;
+    myUpdate("mute", "true");
+    console.log(mute);
+}
+
+function unmuteBtn() {
+    document.getElementById("unmute-btn").classList.add("active");
+    document.getElementById("mute-btn").classList.remove("active");
+
+    mute = false;
+    myUpdate("mute", "false");
+    console.log(mute);
 }
 
 function setParams(clickedId, index) {
@@ -126,6 +144,17 @@ function moodReset() {
     }
 }
 
+/*function setSound() {
+    getMute();
+
+    if(mute == true) {
+        vid.muted = true;
+    }
+    if(mute == false) {
+        vid.muted = false;
+    }
+}*/
+
 
 
 /*Andrey mods*/
@@ -140,6 +169,11 @@ async function myGet(itemkey) {
 function getOverride() {
     return myGet("override").then(function (result) {
       override = (result === 'true');
+    });
+}
+function getMute() {
+    return myGet("mute").then(function (result) {
+      mute = (result === 'true');
     });
 }
 function getChange() {

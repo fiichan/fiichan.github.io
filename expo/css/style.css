@@ -210,6 +210,10 @@ body {
 #off-btn.active {
     background-color: #F40504;
 }
+#mute-btn.active, #unmute-btn.active {
+    background-color: #00356B;
+    color: white;
+}
 
 .time-btn.active {
     background-color: #00356B;
