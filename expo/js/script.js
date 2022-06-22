@@ -284,7 +284,7 @@ function moodChange(index) {
 function moodReset() {
     for(i=0;i<5;++i) {
         document.getElementById(moodId + moodNumber[i]).src= filePath + fileNames[i] + ".png";
-        document.getElementById(percentId + moodNumber[i]).style.color = "#7F7F7F";
+        document.getElementById(percentId + moodNumber[i]).style.color = "#bbbbbb";
         document.getElementById(percentId + moodNumber[i]).style.fontWeight = "400";
     }
 }
