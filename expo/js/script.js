@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //view = setInterval(refreshAll, 500);
     //sleep(5000);
     //clearInterval(view);
+    view = setInterval(overrideSwitch, 1000);
     view = setInterval(myload, 1000);
     //view = setInterval(refreshAll, songDurations[mood-1]);
     //setInterval(refreshAll, 1000);
@@ -82,28 +83,10 @@ function myload() {
     view = setInterval(refreshAll, songDurations[mood-1]);
 }
 
-function load() {
-    if(loadVotesDone < 5) {
-        console.log('not done', loadVotesDone);
-        view = setInterval(dumbRefresh, 500);
-        //view = setTimeout(refreshAll, 500);
-        //clearInterval(view);
-        //refreshAll();
-        //sleep(2000);
-    }
-    if(loadVotesDone >= 5 && loadVotesDone < 10) {
-        console.log('it2', loadVotesDone);
-        view = setInterval(dumbRefresh, 500);
-        //clearInterval(view);
-        //view = setTimeout(refreshAll, 500);
-        //clearTimeout(view);
-    }
-    if(loadVotesDone > 10) {
-        console.log('done', loadVotesDone);
-        done = true;
-        time = mood-1;
-        clearInterval(loading);
-        //clearInterval(view);
+function overrideSwitch() {
+    getOverride();
+    if(override == true && window.location.pathname.includes('index')) {
+        window.location.href = "override.html";
     }
 }
 
@@ -130,24 +113,7 @@ function loadingScreen() {
     }
 }
 
-function dumbRefresh() {
-    getVisitors();
-    for(var i=0; i<5; ++i) {
-        getVote(i);
-    }
-    document.getElementById('visitor-count').innerHTML = visitors;
-
-    moodSwitch();
-    moodPercentages();
-    win();
-}
-
 function refreshAll() {
-    getOverride();
-    if(override == true && window.location.pathname.includes('index')) {
-        window.location.href = "override.html";
-    }
-
     getVisitors();
     for(var i=0; i<5; ++i) {
         getVote(i);
