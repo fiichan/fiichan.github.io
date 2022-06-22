@@ -1,4 +1,4 @@
-const moodColors = ["#F40504", "#FF9C03", "#FBFB0D", "#72ED4C", "#00A358"];
+const moodColors = ["#ff403f", "#FF9C03", "#FBFB0D", "#72ED4C", "#00A358"];
 const moodLabels = ["hated", "disliked", "didn't mind", "liked", "loved"];
 const moodNumber = ["1", "2", "3", "4", "5"];
 

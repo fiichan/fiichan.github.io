@@ -1,6 +1,6 @@
 /* Colors 
 Blue: #00356B
-Red: #F40504
+Red: #F40504 - ff403f
 Orange: #FF9C03
 Yellow: #FBFB0D
 Light Green: #72ED4C
@@ -50,7 +50,7 @@ body {
 }
 #mood-label {
     /*Init State*/
-    color: #F40504;
+    color: #ff403f;
 
     padding: 0 4px 0 4px;
 }
@@ -189,7 +189,7 @@ body {
 
 /*Active Btns*/
 #mood-btn-01.active {
-    background-color: #F40504;
+    background-color: #ff403f;
 }
 #mood-btn-02.active {
     background-color: #FF9C03;    
@@ -208,7 +208,7 @@ body {
     background-color: #00A358;
 }
 #off-btn.active {
-    background-color: #F40504;
+    background-color: #ff403f;
 }
 #mute-btn.active, #unmute-btn.active {
     background-color: #00356B;
