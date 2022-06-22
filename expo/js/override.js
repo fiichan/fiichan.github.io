@@ -39,7 +39,7 @@ function refreshAll() {
         window.location.href = "index.html";
     }
     
-    //setSound();
+    setSound();
     getChange();
 
     if(change) {
@@ -144,16 +144,18 @@ function moodReset() {
     }
 }
 
-/*function setSound() {
+function setSound() {
     getMute();
 
+    console.log(mute);
     if(mute == true) {
         vid.muted = true;
     }
     if(mute == false) {
         vid.muted = false;
     }
-}*/
+    vid.play();
+}
 
 
 

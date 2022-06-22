@@ -124,6 +124,9 @@ function refreshAll() {
 
     moodPercentages();
     win();
+
+    vid.play();
+    vid.muted = false;
 }
 /*function refreshAll() {
     Promise.all([getVisitors, getMood]).then(values => {
