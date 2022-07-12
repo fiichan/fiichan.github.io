@@ -1,0 +1,61 @@
+* {
+  font-family: "Proxima Nova Light", Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: #224362;
+  background-image: url("../img/constellations.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  padding: 20px;
+}
+
+h1, h2, p, em, b {
+  color: #FBF9E4;
+}
+
+h1 {
+  font-family: "Proxima Nova Bold", Helvetica, Arial, sans-serif;
+  font-size: 60pt;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 30pt;
+  margin-top: 0;
+  font-weight: 100;
+}
+
+p {
+  font-size: 15pt;
+  margin-bottom: 10px;
+}
+
+b a {
+  text-decoration: none;
+  font-family: "Proxima Nova Bold", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color: #FBF9E4;
+}
+
+b a:hover {
+  background-color: #081C2F;
+}
+
+#header {
+  margin-bottom: 40px;
+}
+
+.section-bar {
+  background-color: #081C2F;
+  padding: 5px 0 5px 0;
+}
+
+.section-bar h3 {
+  color: #FFFFFF;
+  font-size: 12pt;
+  text-transform: uppercase;
+  font-family: "Proxima Nova Bold", Helvetica, Arial, sans-serif;
+}
+/*# sourceMappingURL=style.css.map */

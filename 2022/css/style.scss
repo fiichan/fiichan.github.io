@@ -1,0 +1,68 @@
+//Variables
+$dark-blue: #081C2F;
+$blue: #224362;
+$cream: #FBF9E4;
+$yellow: #FFDB45;
+$white: #FFFFFF;
+
+* {
+    font-family: "Proxima Nova Light", Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: $blue;
+    background-image: url("../img/constellations.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    padding: 20px;
+}
+
+h1, h2, p, em, b{
+    color: $cream;
+}
+
+h1 {
+    font-family: "Proxima Nova Bold", Helvetica, Arial, sans-serif;
+    font-size: 60pt;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 30pt;
+    margin-top: 0;
+    font-weight: 100;
+}
+
+p {
+    font-size: 15pt;
+    margin-bottom: 10px;
+}
+
+b a {
+    text-decoration: none;
+    font-family: "Proxima Nova Bold", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: $cream;
+}
+b a:hover {
+    background-color: $dark-blue;
+}
+
+
+//Sections
+#header {
+    margin-bottom: 40px;
+}
+
+.section-bar {
+    background-color: $dark-blue;
+    padding: 5px 0 5px 0;
+
+    h3 {
+        color: $white;
+        font-size: 12pt;
+        text-transform: uppercase;
+        font-family: "Proxima Nova Bold", Helvetica, Arial, sans-serif;
+    }
+}
